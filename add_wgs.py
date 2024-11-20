@@ -34,12 +34,12 @@ longitudes = []
 for index, row in df.iterrows():
     x_itm, y_itm = row['X'], row['Y']
     lon, lat = transformer.transform(float(x_itm), float(y_itm))
-    longitudes.append(lon)
-    latitudes.append(lat)
+    longitudes.append(round(lon, 7))
+    latitudes.append(round(lat, 7))
 
 # Add the new columns to the DataFrame
-df['lon_WGS84'] = longitudes
-df['lat_WGS84'] = latitudes
+df['Longitude_WGS84'] = longitudes
+df['Latitude_WGS84'] = latitudes
 
 # Output the updated DataFrame to stdout
 df.to_csv(sys.stdout, index=False)
